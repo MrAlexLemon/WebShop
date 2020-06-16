@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using WebShop.Services.Identity.Core.Entities;
+
+namespace WebShop.Services.Identity.Core.Repositories
+{
+    public interface IUserRepository
+    {
+        Task<User> GetAsync(Guid id);
+        Task<User> GetAsync(string email);
+        Task AddAsync(User user);
+    }
+}

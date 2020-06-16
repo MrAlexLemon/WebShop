@@ -38,6 +38,8 @@ namespace WebShop.Services.Identity.Core.Entities
             {
                 throw new RevokedRefreshTokenException();
             }
+
+            RevokedAt = revokedAt;
         }
     }
 }
