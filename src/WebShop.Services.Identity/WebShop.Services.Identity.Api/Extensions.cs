@@ -1,11 +1,16 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
 using System;
 using System.Text;
 using WebShop.Services.Identity.Application.Dto;
 using WebShop.Services.Identity.Application.Services;
+using WebShop.Services.Identity.Core.Entities;
+using WebShop.Services.Identity.Infrastructure.Mongo.Repositories;
+using WebShop.Services.Identity.Infrastructure.Types;
 
 namespace WebShop.Services.Identity.Api
 {
@@ -52,5 +57,46 @@ namespace WebShop.Services.Identity.Api
 
             return model;
         }
+
+
+        public static void AddMongo(this ContainerBuilder builder)
+        {
+            builder.Register(context =>
+            {
+                var configuration = context.Resolve<IConfiguration>();
+                var options = configuration.GetOptions<MongoDbOptions>("mongo");
+
+                return options;
+            }).SingleInstance();
+
+            builder.Register(context =>
+            {
+                var options = context.Resolve<MongoDbOptions>();
+
+                return new MongoClient(options.ConnectionString);
+            }).SingleInstance();
+
+            builder.Register(context =>
+            {
+                var options = context.Resolve<MongoDbOptions>();
+                var client = context.Resolve<MongoClient>();
+                return client.GetDatabase(options.Database);
+
+            }).InstancePerLifetimeScope();
+
+            /*builder.RegisterType<MongoDbInitializer>()
+                .As<IMongoDbInitializer>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<MongoDbSeeder>()
+                .As<IMongoDbSeeder>()
+                .InstancePerLifetimeScope();*/
+        }
+
+        public static void AddMongoRepository<TEntity>(this ContainerBuilder builder, string collectionName)
+            where TEntity : AggregateRoot
+            => builder.Register(ctx => new MongoRepository<TEntity>(ctx.Resolve<IMongoDatabase>(), collectionName))
+                .As<IMongoRepository<TEntity>>()
+                .InstancePerLifetimeScope();
     }
 }
