@@ -6,8 +6,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using WebShop.Services.Identity.Application.Dto;
+using WebShop.Services.Identity.Application.Services;
 
-namespace WebShop.Services.Identity.Application.Services
+namespace WebShop.Services.Identity.Infrastructure.Auth
 {
     public class JwtHandler : IJwtHandler
     {

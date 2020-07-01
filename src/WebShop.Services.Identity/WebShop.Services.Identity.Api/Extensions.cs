@@ -9,6 +9,7 @@ using System.Text;
 using WebShop.Services.Identity.Application.Dto;
 using WebShop.Services.Identity.Application.Services;
 using WebShop.Services.Identity.Core.Entities;
+using WebShop.Services.Identity.Infrastructure.Auth;
 using WebShop.Services.Identity.Infrastructure.Mongo.Repositories;
 using WebShop.Services.Identity.Infrastructure.Types;
 

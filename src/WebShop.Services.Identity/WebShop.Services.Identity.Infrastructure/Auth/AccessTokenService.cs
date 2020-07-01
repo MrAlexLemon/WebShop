@@ -6,8 +6,9 @@ using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using WebShop.Services.Identity.Application.Dto;
+using WebShop.Services.Identity.Application.Services;
 
-namespace WebShop.Services.Identity.Application.Services
+namespace WebShop.Services.Identity.Infrastructure.Auth
 {
     public class AccessTokenService : IAccessTokenService
     {
