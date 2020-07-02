@@ -7,7 +7,7 @@ using WebShop.Services.Products.Core.Utils;
 
 namespace WebShop.Services.Products.Core.Repositories
 {
-    public interface IProductsRepository
+    public interface IProductRepository
     {
         Task<Product> GetAsync(Guid id);
         Task<bool> ExistsAsync(Guid id);
