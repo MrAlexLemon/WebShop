@@ -17,7 +17,7 @@ namespace WebShop.Services.Products.Application.Handlers
 {
     public sealed class CreateProductHandler : IRequestHandler<CreateProductCommand, CreateProductResponse>, ICommandHandler<CreateProductCommand>
     {
-        private readonly IProductRepository _productsRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IBusPublisher _busPublisher;
 
 
@@ -25,7 +25,7 @@ namespace WebShop.Services.Products.Application.Handlers
             IProductRepository productsRepository,
             IBusPublisher busPublisher)
         {
-            _productsRepository = productsRepository;
+            _productRepository = productsRepository;
             _busPublisher = busPublisher;
         }
 
@@ -50,7 +50,7 @@ namespace WebShop.Services.Products.Application.Handlers
                     "Product quantity cannot be negative.");
             }
 
-            if (await _productsRepository.ExistsAsync(command.Name))
+            if (await _productRepository.ExistsAsync(command.Name))
             {
                 throw new DomainException("product_already_exists",
                     $"Product: '{command.Name}' already exists.");
@@ -58,7 +58,7 @@ namespace WebShop.Services.Products.Application.Handlers
 
             var product = new Product(command.Id, command.Name,
                 command.Description, command.Vendor, command.Price, command.Quantity);
-            await _productsRepository.AddAsync(product);
+            await _productRepository.AddAsync(product);
             await _busPublisher.PublishAsync(new ProductCreated(command.Id, command.Name,
                 command.Description, command.Vendor, command.Price, command.Quantity), context);
         }

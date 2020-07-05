@@ -7,5 +7,11 @@ namespace WebShop.Services.Products.Application.Responses
     public class DeleteProductResponse
     {
         public Guid Id { get; }
+
+        public DeleteProductResponse(Guid id)
+        {
+            Id = id;
+        }
     }
+
 }

@@ -14,15 +14,15 @@ namespace WebShop.Services.Products.Application.Handlers
 {
     public sealed class BrowseProductsHandler : IRequestHandler<BrowseProductsQuery, PagedResult<ProductResponse>>
     {
-        private readonly IProductRepository _productsRepository;
+        private readonly IProductRepository _productRepository;
 
         public BrowseProductsHandler(IProductRepository productsRepository)
-            => _productsRepository = productsRepository;
+            => _productRepository = productsRepository;
 
         public async Task<PagedResult<ProductResponse>> Handle(BrowseProductsQuery query, CancellationToken cancellationToken)
         {
             BrowseProducts tempQuery = new BrowseProducts { PriceFrom = query.PriceFrom, PriceTo  = query.PriceTo, Page = query.Page, Results = query.Results, OrderBy = query.OrderBy, SortOrder = query.SortOrder };
-            var pagedResult = await _productsRepository.BrowseAsync(tempQuery);
+            var pagedResult = await _productRepository.BrowseAsync(tempQuery);
             var products = pagedResult.Items.Select(p => new ProductResponse
             {
                 Id = p.Id,

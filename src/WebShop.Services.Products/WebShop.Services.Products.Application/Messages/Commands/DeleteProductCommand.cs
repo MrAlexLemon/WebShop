@@ -7,7 +7,7 @@ using WebShop.Services.Products.Core.Messages;
 
 namespace WebShop.Services.Products.Application.Messages.Commands
 {
-    public class DeleteProductCommand : IRequest<CreateProductResponse>, ICommand
+    public class DeleteProductCommand : IRequest<DeleteProductResponse>, ICommand
     {
         public Guid Id { get; }
 
