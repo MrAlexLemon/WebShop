@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Services.Products.Core", "WebShop.Services.Products.Core\WebShop.Services.Products.Core.csproj", "{AF6F018E-EEE5-4D56-B3F7-618652B00E79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Services.Products.Core", "WebShop.Services.Products.Core\WebShop.Services.Products.Core.csproj", "{AF6F018E-EEE5-4D56-B3F7-618652B00E79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Services.Products.Infrastructure", "WebShop.Services.Products.Infrastructure\WebShop.Services.Products.Infrastructure.csproj", "{FE1C9005-EBA4-4C94-8576-78165DEF9D5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Services.Products.Infrastructure", "WebShop.Services.Products.Infrastructure\WebShop.Services.Products.Infrastructure.csproj", "{FE1C9005-EBA4-4C94-8576-78165DEF9D5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Services.Products.Application", "WebShop.Services.Products.Application\WebShop.Services.Products.Application.csproj", "{D88160C5-E2EF-42F3-853C-C36FE4EB501A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Services.Products.Application", "WebShop.Services.Products.Application\WebShop.Services.Products.Application.csproj", "{D88160C5-E2EF-42F3-853C-C36FE4EB501A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Services.Products.Api", "WebShop.Services.Products.Api\WebShop.Services.Products.Api.csproj", "{C1D228E3-046B-4AD2-B16A-F3B3BEC09F11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Services.Products.Api", "WebShop.Services.Products.Api\WebShop.Services.Products.Api.csproj", "{C1D228E3-046B-4AD2-B16A-F3B3BEC09F11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShop.Services.Common", "..\WebShop.Services.Common\WebShop.Services.Common\WebShop.Services.Common\WebShop.Services.Common.csproj", "{E1C2916E-DE23-4ED0-83B3-673D504E2A8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C1D228E3-046B-4AD2-B16A-F3B3BEC09F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1D228E3-046B-4AD2-B16A-F3B3BEC09F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1D228E3-046B-4AD2-B16A-F3B3BEC09F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1C2916E-DE23-4ED0-83B3-673D504E2A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C2916E-DE23-4ED0-83B3-673D504E2A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C2916E-DE23-4ED0-83B3-673D504E2A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C2916E-DE23-4ED0-83B3-673D504E2A8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

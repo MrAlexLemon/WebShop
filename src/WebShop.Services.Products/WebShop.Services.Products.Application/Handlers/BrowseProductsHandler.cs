@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WebShop.Services.Common.Utils;
 using WebShop.Services.Products.Application.Queries;
 using WebShop.Services.Products.Application.Responses;
 using WebShop.Services.Products.Core.Repositories;
-using WebShop.Services.Products.Core.Utils;
 
 namespace WebShop.Services.Products.Application.Handlers
 {

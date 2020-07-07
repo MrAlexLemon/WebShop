@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WebShop.Services.Common.Exceptions;
+using WebShop.Services.Common.Messages;
+using WebShop.Services.Common.RabbitMq;
 using WebShop.Services.Products.Application.Messages;
 using WebShop.Services.Products.Application.Messages.Commands;
 using WebShop.Services.Products.Application.Messages.Events;
 using WebShop.Services.Products.Application.Responses;
-using WebShop.Services.Products.Core.Exceptions;
-using WebShop.Services.Products.Core.Messages;
 using WebShop.Services.Products.Core.Repositories;
 
 namespace WebShop.Services.Products.Application.Handlers

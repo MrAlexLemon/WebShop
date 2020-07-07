@@ -5,12 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShop.Services.Common.ErrorMiddleware;
 using WebShop.Services.Products.Application.Messages.Commands;
 using WebShop.Services.Products.Application.Queries;
-using WebShop.Services.Products.Application.Responses;
-using WebShop.Services.Products.Core.Repositories;
-using WebShop.Services.Products.Core.Utils;
-using WebShop.Services.Products.Infrastructure.ErrorMiddleware;
 
 namespace WebShop.Services.Products.Api.Controllers
 {

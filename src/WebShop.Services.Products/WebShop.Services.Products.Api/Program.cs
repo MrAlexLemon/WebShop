@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WebShop.Services.Products.Infrastructure.Logging;
+using WebShop.Services.Common.Logging;
 
 namespace WebShop.Services.Products.Api
 {

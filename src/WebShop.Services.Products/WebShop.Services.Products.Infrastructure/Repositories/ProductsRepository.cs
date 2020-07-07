@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop.Services.Common.Mongo;
+using WebShop.Services.Common.Utils;
 using WebShop.Services.Products.Core.Entities;
 using WebShop.Services.Products.Core.Repositories;
-using WebShop.Services.Products.Core.Utils;
 
 namespace WebShop.Services.Products.Infrastructure.Repositories
 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Services.Products.Core.Entities.Base;
-using WebShop.Services.Products.Core.Exceptions;
+using WebShop.Services.Common.Entities.Base;
+using WebShop.Services.Common.Exceptions;
 
 namespace WebShop.Services.Products.Core.Entities
 {

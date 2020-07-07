@@ -13,17 +13,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebShop.Services.Common.ErrorMiddleware;
+using WebShop.Services.Common.Mongo;
+using WebShop.Services.Common.RabbitMq;
+using WebShop.Services.Common.Swagger;
+using WebShop.Services.Common.Utils;
 using WebShop.Services.Products.Application.Handlers;
 using WebShop.Services.Products.Application.Messages;
 using WebShop.Services.Products.Application.Messages.Commands;
 using WebShop.Services.Products.Application.Messages.Events;
 using WebShop.Services.Products.Application.Queries;
 using WebShop.Services.Products.Core.Entities;
-using WebShop.Services.Products.Infrastructure.ErrorMiddleware;
-using WebShop.Services.Products.Infrastructure.Extensions;
-using WebShop.Services.Products.Infrastructure.RabbitMq;
-using WebShop.Services.Products.Infrastructure.Swagger;
-using WebShop.Services.Products.Infrastructure.Utils;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebShop.Services.Products.Api

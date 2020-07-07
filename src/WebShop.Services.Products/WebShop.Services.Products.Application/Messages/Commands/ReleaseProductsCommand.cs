@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Services.Products.Core.Messages;
 using WebShop.Services.Products.Application.Responses;
+using WebShop.Services.Common.Messages;
 
 namespace WebShop.Services.Products.Application.Messages.Commands
 {

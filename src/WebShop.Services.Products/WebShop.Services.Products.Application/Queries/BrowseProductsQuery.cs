@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebShop.Services.Common.Utils;
 using WebShop.Services.Products.Application.Responses;
-using WebShop.Services.Products.Core.Utils;
 
 namespace WebShop.Services.Products.Application.Queries
 {
