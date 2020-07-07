@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Services.Identity.Application.Dto;
 
-namespace WebShop.Services.Identity.Application.Services
+namespace WebShop.Services.Common.Authentication
 {
     public interface IJwtHandler
     {

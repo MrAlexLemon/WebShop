@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
-using WebShop.Services.Identity.Application.Services;
 
-namespace WebShop.Services.Identity.Api
+namespace WebShop.Services.Common.Authentication
 {
     public class AccessTokenValidatorMiddleware : IMiddleware
     {

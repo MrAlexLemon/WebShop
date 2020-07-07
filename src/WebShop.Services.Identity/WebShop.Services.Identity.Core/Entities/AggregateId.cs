@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Services.Identity.Core.Exceptions;
 
 namespace WebShop.Services.Identity.Core.Entities
 {
@@ -18,7 +17,7 @@ namespace WebShop.Services.Identity.Core.Entities
         {
             if(value == Guid.Empty)
             {
-                throw new InvalidAggregateIdException();
+                throw new Exception();
             }
 
             Value = value;

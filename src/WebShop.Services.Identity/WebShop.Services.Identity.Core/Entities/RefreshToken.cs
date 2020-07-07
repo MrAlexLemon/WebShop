@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using WebShop.Services.Identity.Core.Exceptions;
+using WebShop.Services.Common.Entities.Base;
+using WebShop.Services.Common.Exceptions;
 
 namespace WebShop.Services.Identity.Core.Entities
 {
-    public class RefreshToken : AggregateRoot
+    public class RefreshToken : AggregateRoot, IIdentifiable
     {
-        public AggregateId UserId { get; private set; }
+        public Guid Id { get; private set; }
+        public Guid UserId { get; private set; }
         public string Token { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public DateTime? RevokedAt { get; private set; }
@@ -17,29 +20,28 @@ namespace WebShop.Services.Identity.Core.Entities
         {
         }
 
-        public RefreshToken(AggregateId id, AggregateId userId, string token, DateTime createdAt,
-            DateTime? revokedAt = null)
+        public RefreshToken(User user, IPasswordHasher<User> passwordHasher)
         {
-            if (string.IsNullOrWhiteSpace(token))
-            {
-                throw new EmptyRefreshTokenException();
-            }
-
-            Id = id;
-            UserId = userId;
-            Token = token;
-            CreatedAt = createdAt;
-            RevokedAt = revokedAt;
+            Id = Guid.NewGuid();
+            UserId = user.Id;
+            CreatedAt = DateTime.UtcNow;
+            Token = CreateToken(user, passwordHasher);
         }
 
-        public void Revoke(DateTime revokedAt)
+        public void Revoke()
         {
-            if(Revoked)
+            if (Revoked)
             {
-                throw new RevokedRefreshTokenException();
+                throw new DomainException(Codes.RefreshTokenAlreadyRevoked,
+                    $"Refresh token: '{Id}' was already revoked at '{RevokedAt}'.");
             }
-
-            RevokedAt = revokedAt;
+            RevokedAt = DateTime.UtcNow;
         }
+
+        private static string CreateToken(User user, IPasswordHasher<User> passwordHasher)
+            => passwordHasher.HashPassword(user, Guid.NewGuid().ToString("N"))
+                .Replace("=", string.Empty)
+                .Replace("+", string.Empty)
+                .Replace("/", string.Empty);
     }
 }

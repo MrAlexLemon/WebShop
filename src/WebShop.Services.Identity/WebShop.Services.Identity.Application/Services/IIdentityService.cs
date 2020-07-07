@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WebShop.Services.Identity.Application.Commands;
-using WebShop.Services.Identity.Application.Dto;
 using WebShop.Services.Identity.Core.Entities;
 
 namespace WebShop.Services.Identity.Application.Services

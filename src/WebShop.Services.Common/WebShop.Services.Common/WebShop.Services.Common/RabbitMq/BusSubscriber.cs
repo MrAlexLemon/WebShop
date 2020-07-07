@@ -100,9 +100,9 @@ namespace WebShop.Services.Common.RabbitMq
                     currentRetry++;
                     _logger.LogError(exception, exception.Message);
 
-                    if (exception is DomainException dShopException && onError != null)
+                    if (exception is DomainException DomainException && onError != null)
                     {
-                        var rejectedEvent = onError(message, dShopException);
+                        var rejectedEvent = onError(message, DomainException);
                         await _busClient.PublishAsync(rejectedEvent, ctx => ctx.UseMessageContext(correlationContext));
                         _logger.LogInformation($"Published a rejected event: '{rejectedEvent.GetType().Name}' " +
                                                $"for the message: '{messageName}' with correlation id: '{correlationContext.Id}'.");
@@ -139,9 +139,9 @@ namespace WebShop.Services.Common.RabbitMq
             catch (Exception exception)
             {
                 _logger.LogError(exception, exception.Message);
-                if (exception is DomainException dShopException && onError != null)
+                if (exception is DomainException DomainException && onError != null)
                 {
-                    var rejectedEvent = onError(message, dShopException);
+                    var rejectedEvent = onError(message, DomainException);
                     await _busClient.PublishAsync(rejectedEvent, ctx => ctx.UseMessageContext(correlationContext));
                     _logger.LogInformation($"Published a rejected event: '{rejectedEvent.GetType().Name}' " +
                                            $"for the message: '{messageName}' with correlation id: '{correlationContext.Id}'.");

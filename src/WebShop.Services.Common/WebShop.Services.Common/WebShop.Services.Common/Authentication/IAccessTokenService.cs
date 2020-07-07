@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebShop.Services.Identity.Application.Services
+namespace WebShop.Services.Common.Authentication
 {
     public interface IAccessTokenService
     {

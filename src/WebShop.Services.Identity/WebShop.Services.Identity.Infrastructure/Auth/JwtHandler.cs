@@ -5,8 +5,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using WebShop.Services.Identity.Application.Dto;
 using WebShop.Services.Identity.Application.Services;
+using WebShop.Services.Common.Authentication;
 
 namespace WebShop.Services.Identity.Infrastructure.Auth
 {

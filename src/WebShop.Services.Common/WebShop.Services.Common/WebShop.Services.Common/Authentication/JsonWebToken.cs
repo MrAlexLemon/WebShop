@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebShop.Services.Identity.Application.Dto
+namespace WebShop.Services.Common.Authentication
 {
     public class JsonWebToken
     {

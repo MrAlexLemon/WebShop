@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\WebShop.Services.Common\WebShop.Services.Common\WebShop.Services.Common\WebShop.Services.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using WebShop.Services.Identity.Application.Dto;
 
 namespace WebShop.Services.Identity.Application.Services
 {
@@ -11,9 +11,5 @@ namespace WebShop.Services.Identity.Application.Services
         Task AddAsync(Guid userId);
         Task<JsonWebToken> CreateAccessTokenAsync(string refreshToken);
         Task RevokeAsync(string refreshToken, Guid userId);
-
-        /*Task<string> CreateAsync(Guid userId);
-        Task RevokeAsync(string refreshToken);
-        Task<AuthDto> UseAsync(string refreshToken);*/
     }
 }

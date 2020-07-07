@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WebShop.Services.Common.Mongo;
 using WebShop.Services.Identity.Core.Entities;
 using WebShop.Services.Identity.Core.Repositories;
 
