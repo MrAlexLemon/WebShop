@@ -43,43 +43,23 @@ namespace WebShop.Services.Products.Api
             services.AddControllersWithViews()
         .AddNewtonsoftJson();
             services.AddRazorPages();
-            //services.AddMvcCore(option => option.EnableEndpointRouting = false);//.AddMvc(option => option.EnableEndpointRouting = false).AddControllersAsServices();
-            //services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddCustomMvc();
-            //services.AddMediatR(typeof(Startup));
             services.AddSwaggerDocs();
-            //services.AddTransient(typeof(IRequestHandler<,>), typeof(BrowseProductsHandler));
-            services.AddMediatorHandlers(Assembly.GetEntryAssembly());
-            //var assembly = AppDomain.CurrentDomain.Load("WebShop.Services.Products.Application.Handlers");
-            //services.AddMediatR(typeof(WebShop.Services.Products.Application.Handlers.BrowseProductsHandler).GetTypeInfo().Assembly);
-
-            //services.AddMediatR(typeof(Startup));
-            //services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(CreateProductCommand).GetTypeInfo().Assembly, typeof(CreateProductHandler).GetTypeInfo().Assembly, typeof(BrowseProductsHandler).GetTypeInfo().Assembly, typeof(BrowseProductsQuery).GetTypeInfo().Assembly);
-            //services.AddMediatR(typeof(CreateProductHandler).GetTypeInfo().Assembly);
-            //services.AddMediatorHandlers(Assembly.GetAssembly(typeof(CreateProductCommand)));
+            
+            services.AddScoped(typeof(WebShop.Services.Products.Core.Repositories.IProductRepository), typeof(WebShop.Services.Products.Infrastructure.Repositories.ProductRepository));
+            services.AddMediatR(typeof(CreateProductCommand).GetTypeInfo().Assembly);
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                 .AsImplementedInterfaces();
             builder.Populate(services);
-            //builder.AddMediatr();
+            
             builder.AddRabbitMq();
             builder.AddMongo();
             builder.AddMongoRepository<Product>("Products");
-
-            /*builder
-                .RegisterAssemblyTypes(typeof(IRequest<>).Assembly)
-                .Where(t => t.IsClosedTypeOf(typeof(IRequest<>)))
-                .AsImplementedInterfaces();
-
-            builder
-                .RegisterAssemblyTypes(typeof(IRequestHandler<>).Assembly)
-                .Where(t => t.IsClosedTypeOf(typeof(IRequestHandler<>)))
-                .AsImplementedInterfaces();*/
-
+            
             Container = builder.Build();
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            
             return new AutofacServiceProvider(Container);
         }
 

@@ -32,7 +32,7 @@ namespace WebShop.Services.Products.Application.Handlers
                 Price = p.Price,
                 Quantity = p.Quantity
             }).ToList();
-
+            
             return PagedResult<ProductResponse>.From(pagedResult, products);
         }
     }

@@ -22,14 +22,6 @@ namespace WebShop.Services.Products.Api.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Get()
-        {
-            return Ok();
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("search")]
         public async Task<IActionResult> Get([FromQuery] BrowseProductsQuery query)
         {
             var result = await _mediator.Send(query);
@@ -38,7 +30,7 @@ namespace WebShop.Services.Products.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         [AllowAnonymous]
         public async Task<IActionResult> Get(GetProductQuery query)
         {
@@ -49,21 +41,21 @@ namespace WebShop.Services.Products.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(CreateProductCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateProductCommand command)
         {
             var result = await _mediator.Send(command);
             return Accepted();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, UpdateProductCommand command)
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateProductCommand command)
         {
             command.Bind(c => c.Id, id);
             var result = await _mediator.Send(command);
             return Accepted();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(DeleteProductCommand command)
         {
             var result = await _mediator.Send(command);
