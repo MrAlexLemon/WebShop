@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShop.Services.Common.Authentication;
 using WebShop.Services.Common.ErrorMiddleware;
 using WebShop.Services.Products.Application.Messages.Commands;
 using WebShop.Services.Products.Application.Queries;
 
 namespace WebShop.Services.Products.Api.Controllers
 {
+    [AdminAuth]
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
