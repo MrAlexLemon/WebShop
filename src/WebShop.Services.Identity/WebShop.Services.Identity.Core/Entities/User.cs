@@ -9,7 +9,7 @@ using WebShop.Services.Common.Exceptions;
 
 namespace WebShop.Services.Identity.Core.Entities
 {
-    public class User : AggregateRoot, IIdentifiable
+    public class User : IIdentifiable
     {
         private static readonly Regex EmailRegex = new Regex(
             @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +

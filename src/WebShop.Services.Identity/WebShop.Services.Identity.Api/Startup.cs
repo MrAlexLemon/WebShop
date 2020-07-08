@@ -20,14 +20,16 @@ using WebShop.Services.Common.RabbitMq;
 using WebShop.Services.Common.Redis;
 using WebShop.Services.Common.Swagger;
 using WebShop.Services.Common.Utils;
+using WebShop.Services.Identity.Application.Services;
 using WebShop.Services.Identity.Core.Entities;
+using WebShop.Services.Identity.Core.Repositories;
 using WebShop.Services.Identity.Infrastructure.Auth;
+using WebShop.Services.Identity.Infrastructure.Mongo.Repositories;
 
 namespace WebShop.Services.Identity.Api
 {
     public class Startup
     {
-        private static readonly string[] Headers = new[] { "X-Operation", "X-Resource", "X-Total-Count" };
         public IConfiguration Configuration { get; }
         public Autofac.IContainer Container { get; private set; }
 
@@ -38,23 +40,25 @@ namespace WebShop.Services.Identity.Api
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IJwtHandler, JwtHandler>();
-            services.AddTransient<IAccessTokenService, AccessTokenService>();
-            services.AddTransient<AccessTokenValidatorMiddleware>();
-
+            services.AddControllersWithViews()
+        .AddNewtonsoftJson();
+            services.AddRazorPages();
+            
             services.AddCustomMvc();
             services.AddSwaggerDocs();
             services.AddJwt();
             services.AddRedis();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy", cors =>
-                        cors.AllowAnyOrigin()
-                            .AllowAnyMethod()
-                            .AllowAnyHeader()
-                            .AllowCredentials());
-                            //.WithExposedHeaders(Headers));
-            });
+            services.AddCors();
+
+            services.AddSingleton<IJwtHandler, JwtHandler>();
+            services.AddTransient<IAccessTokenService, AccessTokenService>();
+            services.AddTransient<AccessTokenValidatorMiddleware>();
+
+            services.AddTransient<IIdentityService,IdentityService>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddTransient<IClaimsProvider, ClaimsProvider>();
+            services.AddTransient<IRefreshTokenService, RefreshTokenService>();
 
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
@@ -79,17 +83,29 @@ namespace WebShop.Services.Identity.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();
+
             app.UseCors("CorsPolicy");
             app.UseAllForwardedHeaders();
             app.UseSwaggerDocs();
             app.UseErrorHandler();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseAccessTokenValidator();
+
             app.UseServiceId();
             //app.UseMvc();
             app.UseRabbitMq();
 
             startupInitializer.InitializeAsync();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
         }
     }
 }

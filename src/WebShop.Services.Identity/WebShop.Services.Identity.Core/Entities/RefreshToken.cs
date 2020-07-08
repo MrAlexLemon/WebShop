@@ -7,7 +7,7 @@ using WebShop.Services.Common.Exceptions;
 
 namespace WebShop.Services.Identity.Core.Entities
 {
-    public class RefreshToken : AggregateRoot, IIdentifiable
+    public class RefreshToken : IIdentifiable
     {
         public Guid Id { get; private set; }
         public Guid UserId { get; private set; }

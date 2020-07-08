@@ -9,7 +9,7 @@ namespace WebShop.Services.Identity.Application.Services
     public interface IRefreshTokenService
     {
         Task AddAsync(Guid userId);
-        Task<JsonWebToken> CreateAccessTokenAsync(string refreshToken);
+        Task<Common.Authentication.JsonWebToken> CreateAccessTokenAsync(string refreshToken);
         Task RevokeAsync(string refreshToken, Guid userId);
     }
 }
